@@ -17,9 +17,11 @@ buildscript {
 plugins {
   kotlin("multiplatform")
   kotlin("plugin.serialization") version libs.versions.kotlin.get()
+  kotlin("native.cocoapods")
   id("com.android.library")
   alias(libs.plugins.sqldelight)
   alias(libs.plugins.mockmp)
+  alias(libs.plugins.kmmBridge)
   `gradle-mvn-push` // on buildSrc/src/main/groovy/gradle-mvn-push.gradle
 }
 detekt {
@@ -40,6 +42,15 @@ mockmp {
   usesHelper = true
 }
 
+kmmbridge {
+  githubReleaseArtifacts()
+  githubReleaseVersions()
+//  spm()
+  cocoapods("git@github.com:jfilowk/test-reader-spec.git")
+  versionPrefix.set("0.3")
+  // etc
+}
+
 kotlin {
   jvm()
   android()
@@ -49,6 +60,15 @@ kotlin {
 
   android {
     publishLibraryVariants("release")
+  }
+
+  cocoapods {
+    summary = "Harmony"
+    homepage = "Link to the Shared Module homepage"
+    ios.deploymentTarget = "14.0"
+    framework {
+      baseName = "Harmony-KMM"
+    }
   }
 
   sourceSets {
