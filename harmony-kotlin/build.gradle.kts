@@ -67,7 +67,7 @@ kotlin {
     homepage = "Link to the Shared Module homepage"
     ios.deploymentTarget = "14.0"
     framework {
-      baseName = "Harmony-KMM"
+      baseName = "Harmony_KMM"
     }
   }
 
