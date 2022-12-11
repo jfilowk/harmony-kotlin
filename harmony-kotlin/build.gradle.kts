@@ -47,7 +47,7 @@ kmmbridge {
   githubReleaseVersions()
 //  spm()
   cocoapods("git@github.com:jfilowk/test-reader-spec.git")
-  versionPrefix.set("0.3")
+  versionPrefix.set("0.4")
   // etc
 }
 
@@ -60,6 +60,13 @@ kotlin {
 
   android {
     publishLibraryVariants("release")
+  }
+
+  targets.withType<org.jetbrains.kotlin.gradle.plugin.mpp.KotlinNativeTarget> {
+    binaries.withType<org.jetbrains.kotlin.gradle.plugin.mpp.Framework> {
+      isStatic = false
+      linkerOpts.add("-lsqlite3")
+    }
   }
 
   cocoapods {

@@ -6,14 +6,14 @@ Pod::Spec.new do |spec|
     spec.authors                  = ''
     spec.license                  = ''
     spec.summary                  = 'Harmony'
-    spec.vendored_frameworks      = 'build/cocoapods/framework/Harmony-KMM.framework'
+    spec.vendored_frameworks      = 'build/cocoapods/framework/Harmony_KMM.framework'
     spec.libraries                = 'c++'
     spec.ios.deployment_target = '14.0'
                 
                 
     spec.pod_target_xcconfig = {
         'KOTLIN_PROJECT_PATH' => ':harmony-kotlin',
-        'PRODUCT_MODULE_NAME' => 'Harmony-KMM',
+        'PRODUCT_MODULE_NAME' => 'Harmony_KMM',
     }
                 
     spec.script_phases = [
